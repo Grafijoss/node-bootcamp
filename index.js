@@ -1,7 +1,12 @@
 const express = require("express");
 const app = express();
 
-const notes = [
+// añadimos el modulo body parser de express
+// de esta forma ya esta disponible el body en el request
+// se parse a json
+app.use(express.json());
+
+let notes = [
   {
     userId: 1,
     id: 1,
@@ -25,28 +30,56 @@ const notes = [
   },
 ];
 
-// a create server se le pasa un callback
-// que se ejecuta cada vez que le llega un request
-// response tiene diferentes metodos para regresar la información
-// const app = http.createServer((request, response) => {
-// es el tipo de dato que regrasamos
-// response.writeHead(200, { "Content-type": "application/json" });
-// response.end(JSON.stringify(notes));
-// });
-
 // response tiene diferentes metodos para regresar la información
 app.get("/", (request, response) => {
   response.send("<h1>Hello World</h1>");
 });
 
 app.get("/notes", (request, response) => {
-  // express al ser un framewrok nos deja siponible metodos
-  // un metodo es .json que sabe que la json
-  // no hay necesidad de aclararlo
-  // response.writeHead(200, { "Content-type": "application/json" });
-  // response.end(JSON.stringify(notes));
-  // ya no hay necesidad colocarlo
   response.json(notes);
+});
+
+// es la forma dicamica de recuperar un segmento del PATH
+app.get("/notes/:id", (request, response) => {
+  // params es parte del objeto request
+  // los segmentos del PATH siempre van a ser un string-
+  const id = Number(request.params.id);
+  const note = notes.find((note) => note.id === id);
+
+  if (note) {
+    response.send(note);
+  } else {
+    response.send(404).end();
+  }
+});
+
+app.delete("/notes/:id", (request, response) => {
+  const id = Number(request.params.id);
+  notes = notes.filter((note) => note.id !== id);
+  response.status(204).end();
+});
+
+app.post("/notes/", (request, response) => {
+  const noteBody = request.body;
+
+  if (!noteBody) {
+    return response.status(400).json({
+      error: "note content is missing",
+    });
+  }
+
+  const ids = notes.map((note) => note.id);
+  const maxId = Math.max(...ids);
+
+  const newNote = {
+    userId: maxId + 1,
+    id: maxId + 1,
+    ...noteBody,
+  };
+
+  notes = [...notes, newNote];
+
+  response.json(newNote);
 });
 
 // el puerto que tiene que escuchar por defecto
