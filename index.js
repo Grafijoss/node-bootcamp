@@ -1,5 +1,5 @@
-const http = require("http"); // commom js
-// import http from 'http' // ecmascript modules
+const express = require("express");
+const app = express();
 
 const notes = [
   {
@@ -27,16 +27,35 @@ const notes = [
 
 // a create server se le pasa un callback
 // que se ejecuta cada vez que le llega un request
-// rsponse tiene diferentes metodos para regresar la información
-const app = http.createServer((request, response) => {
-  // es el tipo de dato que regrasamos
-  response.writeHead(200, { "Content-type": "application/json" });
-  response.end(JSON.stringify(notes));
+// response tiene diferentes metodos para regresar la información
+// const app = http.createServer((request, response) => {
+// es el tipo de dato que regrasamos
+// response.writeHead(200, { "Content-type": "application/json" });
+// response.end(JSON.stringify(notes));
+// });
+
+// response tiene diferentes metodos para regresar la información
+app.get("/", (request, response) => {
+  response.send("<h1>Hello World</h1>");
+});
+
+app.get("/notes", (request, response) => {
+  // express al ser un framewrok nos deja siponible metodos
+  // un metodo es .json que sabe que la json
+  // no hay necesidad de aclararlo
+  // response.writeHead(200, { "Content-type": "application/json" });
+  // response.end(JSON.stringify(notes));
+  // ya no hay necesidad colocarlo
+  response.json(notes);
 });
 
 // el puerto que tiene que escuchar por defecto
 // http por defecto siempre entra al puerto 80
 // https por defecto entra al puerto 443 SSL
 const PORT = 3001;
-app.listen(PORT);
-console.log(`Server is running oon port ${PORT}`);
+
+// como se inicia el servidor en express es asincrono
+// se pasa un callback que se dispara cuando el servidor termina de levantarse
+app.listen(PORT, () => {
+  console.log(`Server is running now on port ${PORT}`);
+});
