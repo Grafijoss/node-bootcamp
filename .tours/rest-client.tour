@@ -1,0 +1,21 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "REST client",
+  "steps": [
+    {
+      "file": "requests/create_note.rest",
+      "description": "> Para que REST client funcione debe estar instalada la extension de VScode\r\n\r\n- Primero indicamos el tipo de acción HTTP (GET, POST, PUT, DELETE...)\r\n- Como segundo argumento colocamos el endpoint al que apunta lacción",
+      "line": 1
+    },
+    {
+      "file": "requests/create_note.rest",
+      "description": "- Content-type\r\n- Es el tipo de respuesta que esperamos recibir",
+      "line": 2
+    },
+    {
+      "file": "requests/create_note.rest",
+      "description": "- En el caso que la acción requiera de un payload o un body para el request",
+      "line": 4
+    }
+  ]
+}

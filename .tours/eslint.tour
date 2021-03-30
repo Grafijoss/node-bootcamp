@@ -4,7 +4,7 @@
   "steps": [
     {
       "file": "package.json",
-      "description": "Extendemos la configuración desde standard ./node_modules/standard/eslintrc.json\r\nya no necesitamos el .eslintrc.js que es una configuración manual para el proyecto\r\n\r\nEn el settings pincipal de VC podemos añadir el la siguiente propiedad para formatear los ficheros cuando se guarda \r\n\r\n```javascript \r\n\"editor.codeActionsOnSave\": {\r\n    \"source.fixAll.eslint\": true\r\n}\r\n``` ",
+      "description": "Extendemos la configuración desde standard ./node_modules/standard/eslintrc.json\r\nya no necesitamos el .eslintrc.js que es una configuración manual para el proyecto\r\n\r\nEn el settings pincipal de VC podemos añadir el la siguiente propiedad para formatear los ficheros cuando se guarda \r\n\r\n```javascript \r\n\"editor.formatOnSave\": false, \r\n\"editor.codeActionsOnSave\": { \r\n  \"source.fixAll.eslint\": true \r\n}, \r\n``` ",
       "line": 23,
       "selection": {
         "start": {
