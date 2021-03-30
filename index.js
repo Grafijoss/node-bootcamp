@@ -99,7 +99,7 @@ app.use((request, response) => {
 // el puerto que tiene que escuchar por defecto
 // http por defecto siempre entra al puerto 80
 // https por defecto entra al puerto 443 SSL
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 
 // como se inicia el servidor en express es asincrono
 // se pasa un callback que se dispara cuando el servidor termina de levantarse
