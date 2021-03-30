@@ -19,6 +19,11 @@
     },
     {
       "file": "package.json",
+      "description": "Para que funciona la configuración de slint tanto para identificar los errores como el auto formateado slint debe estar instalado como dependencia de desarrollo\r\n\r\nnpm install eslind -D",
+      "line": 16
+    },
+    {
+      "file": "package.json",
       "description": "Para poder extender la configuracion primero tenemos que instalar la dependencia de desarrollo\r\n\r\nnpm install standard -D",
       "line": 17
     }
