@@ -1,19 +1,18 @@
 const mongoose = require('mongoose')
 
-const password = require('./password')
+const connectionString = process.env.MONGO_DV_URI
 
-//  podemos llamar la base de datos como queramos en este caso midudv
-const connectionString = `mongodb+srv://lilola:${password}@myfirstcluster.kflco.mongodb.net/midudv?retryWrites=true&w=majority`
-
-// Conexion a mongo db
-
-mongoose.connect(connectionString, { // in order to evoid the deprecation warnings
+mongoose.connect(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
-  useCreateIndex: true // nos facilita a la hora de buscar documentos
+  useCreateIndex: true
 })
   .then(() => {
     console.log('Database connected')
   })
   .catch(err => console.log('ERROR', err))
+
+process.on('uncaughtException', () => {
+  mongoose.connection.disconnect()
+})

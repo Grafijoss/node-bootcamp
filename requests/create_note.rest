@@ -1,8 +1,7 @@
-POST http://localhost:3001/notes/ 
+POST http://localhost:3001/api/notes/ 
 Content-Type: application/json
 
 {
-    "title": "new post",
-    "body":
-      "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+    "content": "new post 3",
+    "important": false
 }

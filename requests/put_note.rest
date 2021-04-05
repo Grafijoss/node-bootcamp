@@ -1,0 +1,7 @@
+PUT http://localhost:3001/api/notes/606a6df5e8ba4d64c8e067fa
+Content-Type: application/json
+
+{
+    "content": "new post 1 editado de nuevo",
+    "important": false
+}

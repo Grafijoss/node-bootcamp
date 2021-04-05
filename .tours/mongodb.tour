@@ -1,0 +1,66 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "mongodb",
+  "steps": [
+    {
+      "file": "package.json",
+      "description": "# mongoose\r\n\r\n- Es un object modeling\r\n- Conecta a la base de datos de mongo\r\n- Crea un sistema de validación\r\n- Lógica para evitar problemas\r\n\r\n\r\n`npm install mongoose`",
+      "line": 24
+    },
+    {
+      "file": "index.js",
+      "description": "# Require mongo config\r\n\r\nAl hacer el require la función se ejecuta attomaticamente y queda guardado en cache",
+      "line": 5
+    },
+    {
+      "file": "mongo.js",
+      "description": "# Conectarse a la MONGODB\r\n\r\n- Se conecta a la mongodb\r\n- El connectionString se copia del cluster de mongodb en CONNECT\r\n- Para evitar los warning se añade un segundo parametro con un objeto donde se dice si se usa o no la propiedad\r\n- useCreateIndex crea un index automatico\r\n- connect siempre regresa una promesa",
+      "line": 5,
+      "selection": {
+        "start": {
+          "line": 12,
+          "character": 3
+        },
+        "end": {
+          "line": 12,
+          "character": 17
+        }
+      }
+    },
+    {
+      "file": "mongo.js",
+      "description": "# Cierra la conexion en caso de una excepción",
+      "line": 16
+    },
+    {
+      "file": "index.js",
+      "description": "# Modelo Note\r\n\r\n- importamos el modelo Note\r\n- mongoose permite crear schemas\r\n- un schema es el contrato que tiene nuestro documento en la base de datos (parametros, tipos)\r\n- El modelo a partir de un esquema nos permite crear instancias para: get, post, put, delete ",
+      "line": 11
+    },
+    {
+      "file": "models/Note.js",
+      "description": "### Importamos a Schema y model desde mongoose",
+      "line": 1
+    },
+    {
+      "file": "models/Note.js",
+      "description": "## Schema\r\n\r\nLos esquemas son los contratos que tienen los documentos en la base de datos",
+      "line": 3
+    },
+    {
+      "file": "models/Note.js",
+      "description": "## Podemos editar el objeto de la respuesta antes de regresarlo\r\n\r\n- delete es mala practica pero en este caso solo estamos mutando el objeto que se va a devolver",
+      "line": 9
+    },
+    {
+      "file": "models/Note.js",
+      "description": "## Model\r\n\r\n- creamos el modelo a partir del schema\r\n- recibe como parametro el nombre debe ser un string en singular por que va a buscar la colección y le va a añadir la s automaticamente\r\n- como segundo parametro recibe el schema\r\n\r\n",
+      "line": 17
+    },
+    {
+      "file": "index.js",
+      "description": "## Instancia del modelo Note\r\n\r\n- El modelo tiene acceso a una serie de metodos como buscar, buscar por id, guardar, eliminar...\r\n- Usamos la instancia del modelos en todos los controladores de notas\r\n- Los metodos regresan una promesa",
+      "line": 40
+    }
+  ]
+}
