@@ -1,6 +1,12 @@
+// los mudulos se lalman una sola vez por que se cachean
+// cuando se llama el modulo se  inicializa la funcion
+require('./mongo')
+
 const express = require('express')
-const cors = require('cors')
 const app = express()
+const cors = require('cors')
+
+const Note = require('./models/Note')
 
 // usamos el middleware de cors para que todoas las peticiones
 // permitan compartir recursos con diferentes origenes
@@ -11,44 +17,29 @@ app.use(cors())
 // se parse a json
 app.use(express.json())
 
-let notes = [
-  {
-    userId: 1,
-    id: 1,
-    title: 'Ttile changed :P',
-    content:
-      'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto',
-    important: true
-  },
-  {
-    userId: 1,
-    id: 2,
-    title: 'qui est esse',
-    content:
-      'est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla',
-    important: true
-  },
-  {
-    userId: 1,
-    id: 3,
-    title: 'ea molestias quasi exercitationem repellat qui ipsa sit aut',
-    content:
-      'et iusto sed quo iure\nvoluptatem occaecati omnis eligendi aut ad\nvoluptatem doloribus vel accusantium quis pariatur\nmolestiae porro eius odio et labore et velit aut',
-    important: true
-  }
-]
+let notes = []
 
 // response tiene diferentes metodos para regresar la información
 app.get('/', (request, response) => {
   response.send('<h1>Hello World</h1>')
 })
 
-app.get('/notes', (request, response) => {
-  response.json(notes)
+app.get('/api/notes', (request, response) => {
+  // response.json(notes.map(note => {
+  //   const { _id, __v, ...restOfNote } = note
+  //   return {
+  //     ...restOfNote,
+  //     id: _id
+  //   }
+  // }))
+  Note.find({})
+    .then(notes => {
+      response.json(notes)
+    })
 })
 
 // es la forma dicamica de recuperar un segmento del PATH
-app.get('/notes/:id', (request, response) => {
+app.get('/api/notes/:id', (request, response) => {
   // params es parte del objeto request
   // los segmentos del PATH siempre van a ser un string-
   const id = Number(request.params.id)
@@ -61,13 +52,13 @@ app.get('/notes/:id', (request, response) => {
   }
 })
 
-app.delete('/notes/:id', (request, response) => {
+app.delete('/api/notes/:id', (request, response) => {
   const id = Number(request.params.id)
   notes = notes.filter((note) => note.id !== id)
   response.status(204).end()
 })
 
-app.post('/notes/', (request, response) => {
+app.post('/api/notes/', (request, response) => {
   const noteBody = request.body
 
   if (!noteBody) {
