@@ -1,0 +1,71 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Tests",
+  "steps": [
+    {
+      "file": "tests/suma_test.js",
+      "description": "## console.assert\r\n\r\n- De esta forma podemos hacer un test manual con console.assert\r\n- console.assert muestra el ssegundo parametro cuando el primer parametro es false",
+      "line": 14
+    },
+    {
+      "file": "package.json",
+      "description": "## Jest instalattion\r\n\r\n`npm i jest -D`\r\n\r\nPosibles problemas:\r\n \r\n - En windows si la carpeta tiene espacios \r\n - Por defecto jest se creo para trabajar del lado de cliente y puede simulado elementos del DOM \r\n - En la configuración debemos decirle en que environment vamos a trabajar\r\n\r\nOtras librerias para hacer test:\r\n\r\n- mocha\r\n- ava\r\n\r\n",
+      "line": 17
+    },
+    {
+      "file": "package.json",
+      "description": "## Jest configuration\r\n\r\n- La configuración de jest puede estar en un archivo aparte jest.config.js\r\n- testEnvironment: por defecto jest esta preparado para hacer test del lado del cliente y puede generar elementos del DOM que van a dar problemas mas adelante, para evitarlo vamos a decirle que el environment en el cual se va a ejecutar es node",
+      "line": 33
+    },
+    {
+      "file": "package.json",
+      "description": "## Entornos en eslint\r\n\r\n- Añadimos la key del entorno\r\n\r\n```javascript\r\n\"env\": {\r\n \"jest\": true\r\n}\r\n```\r\n- Podemos añadir lo entornos que necesitemos\r\n- Añadiendo el key del entorno le decimos a eslint que estamos trabajando que estos entornos y ya tebemos los errores controlados\r\n\r\n",
+      "line": 30
+    },
+    {
+      "file": "package.json",
+      "description": "## Script para correr los test\r\n\r\n`\"test\": \"jest --verbose\"`\r\n\r\n- Creamos el script con la llave test\r\n- Con --verbose nos da la maxima información posible\r\n",
+      "line": 10,
+      "selection": {
+        "start": {
+          "line": 10,
+          "character": 5
+        },
+        "end": {
+          "line": 10,
+          "character": 29
+        }
+      }
+    },
+    {
+      "file": "tests/average.test.js",
+      "description": "## Test unitario\r\n\r\nUn test unitario es cuando vamos a probar una unidad, un metodo en concreto que tiene una entrada y una salida, no tiene side effects ni llama otras funciones\r\n\r\n- Por defecto jest busca todos los archivos que tengan el .test.js\r\n- No es necesario importar jest por que jest busca el archivo y ya sabe que tiene que usarse\r\n- Requerimos el metodo desde el archivo donde se exporta y ya lo podemos usar en los tests",
+      "line": 1
+    },
+    {
+      "file": "tests/average.test.js",
+      "description": "## Describe\r\n\r\n`describe('', () => {})`\r\n\r\n- Este metodo nos permite agrupar tests\r\n- Nos permite describir un contexto o una situación en común que tienen los tests que vamos a agrupar ",
+      "line": 3
+    },
+    {
+      "file": "tests/average.test.js",
+      "description": "## Test\r\n\r\n`test('', () => {})`\r\n\r\n- Para generar un test usamos el metodo test que nos brinda jest\r\n- Como primer parametro le vamos a decir que hace el test\r\n- Como segundo parametro recibe una función que se va a ejecutar para comprobar el test",
+      "line": 4
+    },
+    {
+      "file": "tests/average.test.js",
+      "description": "## Assertion\r\n\r\n`expect(average([1])).toBe(1)`\r\n\r\n- Con expect hacemos la aserción del valor que esperamos como resultado \r\n- Expect tiene muchos metodos tipo `.toBe()` incluso shorthands `.toBeUndefined()` que hace el código mas legible",
+      "line": 5,
+      "selection": {
+        "start": {
+          "line": 5,
+          "character": 5
+        },
+        "end": {
+          "line": 5,
+          "character": 33
+        }
+      }
+    }
+  ]
+}
