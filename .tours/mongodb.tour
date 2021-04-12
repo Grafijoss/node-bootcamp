@@ -14,7 +14,7 @@
     },
     {
       "file": "mongo.js",
-      "description": "# Conectarse a la MONGODB\r\n\r\n- Se conecta a la mongodb\r\n- El connectionString se copia del cluster de mongodb en CONNECT\r\n- Para evitar los warning se añade un segundo parametro con un objeto donde se dice si se usa o no la propiedad\r\n- useCreateIndex crea un index automatico\r\n- connect siempre regresa una promesa",
+      "description": "# Conectarse a la MONGODB\r\n\r\n- Usamos un condicional terniaria para apuntar a la base de datos de acuerdo  al entorno\r\n- Se conecta a la mongodb\r\n- El connectionString se copia del cluster de mongodb en CONNECT\r\n- Para evitar los warning se añade un segundo parametro con un objeto donde se dice si se usa o no la propiedad\r\n- useCreateIndex crea un index automatico\r\n- connect siempre regresa una promesa\r\n- cambiamos el apuntamiento del conection string según el ambiente",
       "line": 5,
       "selection": {
         "start": {
@@ -39,8 +39,7 @@
     },
     {
       "file": "models/Note.js",
-      "description": "### Importamos a Schema y model desde mongoose",
-      "line": 1
+      "description": "### Importamos a Schema y model desde mongoose\r\n\r\n- El modelo tiene el scheme que es el contrato de la entidad en la base de datos\r\n- toJSON retorna la respuesta como json y podemos moficicarla antes de recibirla\r\n- El modelo tiene unsa seri de metodos como: save, delete, findById, ..."
     },
     {
       "file": "models/Note.js",
@@ -54,7 +53,7 @@
     },
     {
       "file": "models/Note.js",
-      "description": "## Model\r\n\r\n- creamos el modelo a partir del schema\r\n- recibe como parametro el nombre debe ser un string en singular por que va a buscar la colección y le va a añadir la s automaticamente\r\n- como segundo parametro recibe el schema\r\n\r\n",
+      "description": "## Model\r\n\r\n- creamos el modelo a partir del schema\r\n- recibe como parametro el nombre debe ser un string en singular por que va a buscar la colección y le va a añadir la **s** automaticamente\r\n- como segundo parametro recibe el schema\r\n\r\n",
       "line": 17
     },
     {

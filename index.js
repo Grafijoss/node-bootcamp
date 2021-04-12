@@ -36,11 +36,9 @@ app.get('/', (request, response) => {
   response.send('<h1>Hello World</h1>')
 })
 
-app.get('/api/notes', (request, response) => {
-  Note.find({})
-    .then(notes => {
-      response.json(notes)
-    })
+app.get('/api/notes', async (request, response) => {
+  const notes = await Note.find({})
+  response.json(notes)
 })
 
 // es la forma dicamica de recuperar un segmento del PATH
@@ -78,21 +76,22 @@ app.put('/api/notes/:id', (request, response, next) => {
     .then(result => response.json(result))
 })
 
-app.delete('/api/notes/:id', (request, response, next) => {
+app.delete('/api/notes/:id', async (request, response, next) => {
   const { id } = request.params
 
-  Note.findByIdAndDelete(id)
-    .then(() => {
-      response.status(204).end()
-    })
-    .catch(next)
-    // busca el middleware con el error como primer parametro
+  try {
+    await Note.findByIdAndDelete(id)
+    response.status(204).end()
+  } catch (err) {
+    next(err)
+  }
+  // busca el middleware con el error como primer parametro
 })
 
-app.post('/api/notes/', (request, response) => {
+app.post('/api/notes/', async (request, response, next) => {
   const noteBody = request.body
 
-  if (!noteBody) {
+  if (!noteBody.content) {
     return response.status(400).json({
       error: 'note content is missing'
     })
@@ -104,10 +103,12 @@ app.post('/api/notes/', (request, response) => {
     important: noteBody.important || false
   })
 
-  note.save()
-    .then(saveNote => {
-      response.json(saveNote)
-    })
+  try {
+    const saveNote = await note.save()
+    response.json(saveNote)
+  } catch (error) {
+    next(error)
+  }
 })
 
 app.use((request, response) => {
@@ -130,6 +131,11 @@ const PORT = process.env.PORT
 
 // como se inicia el servidor en express es asincrono
 // se pasa un callback que se dispara cuando el servidor termina de levantarse
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server is running now on port ${PORT}`)
 })
+
+module.exports = {
+  app,
+  server
+}

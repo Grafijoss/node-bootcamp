@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
-const connectionString = process.env.MONGO_DV_URI
+const { MONGO_DV_URI, MONGO_DV_URI_TEST, NODE_ENV } = process.env
+
+const connectionString = NODE_ENV === 'test'
+  ? MONGO_DV_URI_TEST
+  : MONGO_DV_URI
 
 mongoose.connect(connectionString, {
   useNewUrlParser: true,

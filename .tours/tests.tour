@@ -4,7 +4,7 @@
   "steps": [
     {
       "file": "tests/suma_test.js",
-      "description": "## console.assert\r\n\r\n- De esta forma podemos hacer un test manual con console.assert\r\n- console.assert muestra el ssegundo parametro cuando el primer parametro es false",
+      "description": "## console.assert\r\n\r\n- De esta forma podemos hacer un test manual con console.assert\r\n- console.assert muestra el ssegundo parametro cuando el primer parametro es false\r\n\r\n### Existen varios tipos de tests\r\n\r\n- Test unitario: Cuando se testea una unidad, una funcion con una entrada y una salida que no llama a mas funciones\r\n- Test de integración: Se llama d eintegración por que integra mas de una unidad\r\n- End to end: Integra la base de datos",
       "line": 14
     },
     {
@@ -24,37 +24,82 @@
     },
     {
       "file": "package.json",
-      "description": "## Script para correr los test\r\n\r\n`\"test\": \"jest --verbose\"`\r\n\r\n- Creamos el script con la llave test\r\n- Con --verbose nos da la maxima información posible\r\n",
+      "description": "## Script para correr los test\r\n\r\n`\"test\": \"jest --verbose\"`\r\n\r\n- Creamos el script con la llave test\r\n- --verbose nos da la maxima información posible\r\n- --silent para evitar ver las consolas en los test\r\n- --detectOpenHandles podemos detectar si un puerto esta abierto\r\n- podemos indicarle el path \"tests/notes.test.js\" del test que queremos ejecutar la barra no debe estar ivertida \\ `alt+92`\r\n- `-t \"nombre del test\"` : le indicamos exactamente el test que debe ejecutar solo ejecutara el o los que hagan match con tl titulo del test\r\n\r\n## Script test watch\r\n\r\n`\"test:watch: \"npm run test -- --watch\"`\r\n\r\n- Corremos el script de test\r\n- `--watch`: con este parametro escuchamos los cambios en los archivos\r\n- `--`: Este parametro es para que el script entienda que lo que debe escuchar es el comando qu esta en el script **test** y no `npm run test`\r\n",
       "line": 10,
       "selection": {
         "start": {
           "line": 10,
-          "character": 5
+          "character": 62
         },
         "end": {
           "line": 10,
-          "character": 29
+          "character": 81
         }
       }
     },
     {
+      "file": "package.json",
+      "description": "## Supertest\r\n\r\n`npm install supertest -D`\r\n\r\nEs una biblioteca que nos permite probar: \r\n\r\n- Servidores HTTP\r\n- Microservicios que tengan endpoint ",
+      "line": 21
+    },
+    {
+      "file": "package.json",
+      "description": "## Entorno para tests\r\n\r\n- Para que jest sepa que estamos trabajando en un entorno de prueba usamos el `NODE_ENV=test`\r\n- Puede generear problemas en windows y para arreglarlo podemos instalar una dependencia `npm install cross-env` y esto permite podamos usar bien las variables de entorno y lo ejecutamos anteponiendo `cross-env NODE_ENV=test`",
+      "line": 11,
+      "selection": {
+        "start": {
+          "line": 10,
+          "character": 14
+        },
+        "end": {
+          "line": 10,
+          "character": 27
+        }
+      }
+    },
+    {
+      "file": ".env",
+      "description": "## Base de datos de prueba\r\n\r\nEsta base de datos se crea con animo de pruebas se elimina con continius integration",
+      "line": 3
+    },
+    {
+      "file": "tests/notes.test.js",
+      "description": "## hook beforeEach\r\n\r\n- En los test tenemos la oportunidad de añadir hooks que se ejecutan en diferentes fases de los tests\r\n- beforeEach hook recibe un callback que se va a ejecutar antes de corre los tests\r\n- Este hook nos pueden servir para setear los moocks o poblar la base de datos de pruebas antes de corre los tests\r\n- para este caso vamos a borrar todas las notas y despues a poblarlas con initialNotes\r\n- con for podemos hacer un bucle asincrono",
+      "line": 9,
+      "selection": {
+        "start": {
+          "line": 5,
+          "character": 9
+        },
+        "end": {
+          "line": 5,
+          "character": 21
+        }
+      }
+    },
+    {
+      "file": "tests/notes.test.js",
+      "description": "## hook afterAll\r\n\r\n- En los test tenemos la oportunidad de añadir hooks que se ejecutan en diferentes fases de los tests\r\n- afterAll hook recibe un callback que se va a ejecutar cuando todos los tests terminen\r\n- Este hook nos pueden servir para cerrar la conexión a la base de datos o apagar el servidor",
+      "line": 95
+    },
+    {
       "file": "tests/average.test.js",
-      "description": "## Test unitario\r\n\r\nUn test unitario es cuando vamos a probar una unidad, un metodo en concreto que tiene una entrada y una salida, no tiene side effects ni llama otras funciones\r\n\r\n- Por defecto jest busca todos los archivos que tengan el .test.js\r\n- No es necesario importar jest por que jest busca el archivo y ya sabe que tiene que usarse\r\n- Requerimos el metodo desde el archivo donde se exporta y ya lo podemos usar en los tests",
+      "description": "## Tipos de tests con jest\r\n\r\n- Por defecto jest busca todos los archivos que tengan el .test.js\r\n- No es necesario importar jest por que jest busca el archivo y ya sabe que tiene que usarse\r\n- Requerimos el metodo desde el archivo donde se exporta y ya lo podemos usar en los tests\r\n- Un test unitario es cuando vamos a probar una unidad, un metodo en concreto que tiene una entrada y una salida, no tiene side effects ni llama otras funciones\r\n- Los test de integración llaman mas de una función\r\n- e2e end to end prueban toda la funcionalidad hasta la base de datos",
       "line": 1
     },
     {
       "file": "tests/average.test.js",
-      "description": "## Describe\r\n\r\n`describe('', () => {})`\r\n\r\n- Este metodo nos permite agrupar tests\r\n- Nos permite describir un contexto o una situación en común que tienen los tests que vamos a agrupar ",
+      "description": "## Describe\r\n\r\n`describe('', () => {})`\r\n\r\n- Este metodo nos permite agrupar tests\r\n- Nos permite describir un contexto o una situación en común que tienen los tests que vamos a agrupar \r\n- describe.skip: Podemos omitir este grupo de tests\r\n- describe.only: Solo corre este grupo de tests",
       "line": 3
     },
     {
       "file": "tests/average.test.js",
-      "description": "## Test\r\n\r\n`test('', () => {})`\r\n\r\n- Para generar un test usamos el metodo test que nos brinda jest\r\n- Como primer parametro le vamos a decir que hace el test\r\n- Como segundo parametro recibe una función que se va a ejecutar para comprobar el test",
+      "description": "## Test\r\n\r\n`test('', () => {})`\r\n\r\n- Para generar un test usamos el metodo test que nos brinda jest\r\n- Como primer parametro le vamos a decir que hace el test\r\n- Como segundo parametro recibe una función que se va a ejecutar para comprobar el test\r\n- test.skip: Podemos omitir el test\r\n- test.only: Solo corre este test\r\n- si necesitamos hacer una petición asincrona debemos usar el `test('', async () => {})` para esperar que la petición termine",
       "line": 4
     },
     {
       "file": "tests/average.test.js",
-      "description": "## Assertion\r\n\r\n`expect(average([1])).toBe(1)`\r\n\r\n- Con expect hacemos la aserción del valor que esperamos como resultado \r\n- Expect tiene muchos metodos tipo `.toBe()` incluso shorthands `.toBeUndefined()` que hace el código mas legible",
+      "description": "## Assertion\r\n\r\n`expect(average([1])).toBe(1)`\r\n\r\n- Con expect hacemos la aserción del valor que esperamos como resultado \r\n- Expect tiene muchos metodos tipo `.toBe()` incluso shorthands `.toBeUndefined()` que hace el código mas legible\r\n- Las asersiones deben ser predesibles y no depender de ningún side effect",
       "line": 5,
       "selection": {
         "start": {
@@ -64,6 +109,56 @@
         "end": {
           "line": 5,
           "character": 33
+        }
+      }
+    },
+    {
+      "file": "tests/helpers.js",
+      "description": "## Iniciallizando supertest\r\n\r\n- Supertest necesita para ejecutarse la *app*\r\n- exportamos api para usarlo en los tests",
+      "line": 3,
+      "selection": {
+        "start": {
+          "line": 1,
+          "character": 7
+        },
+        "end": {
+          "line": 1,
+          "character": 16
+        }
+      }
+    },
+    {
+      "file": "tests/notes.test.js",
+      "description": "## Modelo Note\r\n\r\n- Requerimos el modelo Note\r\n- El modele tiene\r\n- scheme que es el contrato que tiene la entidad en la base de datos\r\n- toJSON donde interceptamos la repuesta y la modificamos antes de recibirla\r\n- los metodos para save, delete, deleteMany ...",
+      "line": 8
+    },
+    {
+      "file": "tests/notes.test.js",
+      "description": "## Probando Content-type con supertest\r\n\r\n- api tiene los metodos de http\r\n- cual es el enpoint que queremos recuperar\r\n- con los metodos de get podemos recuperar el statuscode y el Content-type\r\n- application/json debe ser un rgx por que tambien puede llegar el charset=utf-8 y solo queremos saber si lo incluye\r\n",
+      "line": 17
+    },
+    {
+      "file": "tests/notes.test.js",
+      "description": "## Probando la respuesta de un get\r\n\r\n- api hace una petición asincrona por lo tantto el callback del test debe inicir con async\r\n- una ves la petición termina tenemos acceso a toda las respuesta \r\n- en el body de la respuesta tenemos el *body* con el cuerpo de la respuesta\r\n- para los test los expects deben ser predesibles no depeder de un side effect",
+      "line": 24
+    },
+    {
+      "file": "tests/notes.test.js",
+      "description": "## Probando que exista el contenido en cualquir posición de array\r\n\r\n- Creamos en helpers un metodo que va a cargar todas las notas y no retorna un array solo con las notas\r\n- con el metodo toContain de expect esperamos que exista dentro del array",
+      "line": 35
+    },
+    {
+      "file": "tests/notes.test.js",
+      "description": "## Probando añadir una nota\r\n\r\n- Usamos el metodo http post al endpoint\r\n- con send de supertest podemos enviar información\r\n- esperamos que el statuscode es 200\r\n- esperamos que el Content-type sea application/json\r\n- llamamos el endpoint para traer todas las notas\r\n- esperamos que el length de body es la longitud de initialNotes + 1\r\n- usamos el helper getAllContentsFromNotes para probar que el content de la nueva nota existe en la respuesta\r\n",
+      "line": 47,
+      "selection": {
+        "start": {
+          "line": 55,
+          "character": 30
+        },
+        "end": {
+          "line": 55,
+          "character": 53
         }
       }
     }
