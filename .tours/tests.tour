@@ -64,7 +64,7 @@
     },
     {
       "file": "tests/notes.test.js",
-      "description": "## hook beforeEach\r\n\r\n- En los test tenemos la oportunidad de añadir hooks que se ejecutan en diferentes fases de los tests\r\n- beforeEach hook recibe un callback que se va a ejecutar antes de corre los tests\r\n- Este hook nos pueden servir para setear los moocks o poblar la base de datos de pruebas antes de corre los tests\r\n- para este caso vamos a borrar todas las notas y despues a poblarlas con initialNotes\r\n- con for podemos hacer un bucle asincrono",
+      "description": "## hook beforeEach\r\n\r\n- En los test tenemos la oportunidad de añadir hooks que se ejecutan en diferentes fases de los tests\r\n- beforeEach hook recibe un callback que se va a ejecutar antes de corre los tests\r\n- Este hook nos pueden servir para setear los moocks o poblar la base de datos de pruebas antes de corre los tests\r\n- para este caso vamos a borrar todas las notas y despues a poblarlas con initialNotes\r\n- se puede crear las notas como promesas con promiseAll pero nosabemos el orden en el que se van a crear\r\n- con for podemos hacer un bucle asincrono de esta forma garantizamos que las notas se van a crear en el orden que queremos",
       "line": 9,
       "selection": {
         "start": {

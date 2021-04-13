@@ -1,0 +1,41 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Controllers",
+  "steps": [
+    {
+      "file": "index.js",
+      "description": "## Controller\r\n\r\n- de esta forma somos capaces de crear enpoints que van a estar disponibles en nuestra app hecha con express fuera del index\r\n- añadimos un middleware cuando hace match a */api/users* tiene que utilizar el *usersRouter*",
+      "line": 122,
+      "selection": {
+        "start": {
+          "line": 123,
+          "character": 23
+        },
+        "end": {
+          "line": 123,
+          "character": 34
+        }
+      }
+    },
+    {
+      "file": "controllers/users.js",
+      "description": "## Respuesta del endpoint\r\n\r\n- Creamos una constante con el user que s eguardo\r\n- Regresamos el usuario en la respuesta del endpoint",
+      "line": 16
+    },
+    {
+      "file": "controllers/users.js",
+      "description": "## Router de express\r\n\r\n- Nos va a permitir crear un router con los enpointes de forma separada al index\r\n- Es muy similar a los middlewares",
+      "line": 1
+    },
+    {
+      "file": "controllers/users.js",
+      "description": "## Endpoint\r\n\r\n- El path de usersRouter es relativo a la ruta `/api/users`",
+      "line": 4
+    },
+    {
+      "file": "controllers/users.js",
+      "description": "## Instancia del modelo User\r\n\r\n- **User** tiene el scheme, toJSON, y los metodos *save, find, delete, ...*",
+      "line": 8
+    }
+  ]
+}

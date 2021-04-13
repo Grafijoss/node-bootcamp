@@ -12,6 +12,8 @@ const Note = require('./models/Note')
 const notFound = require('./middleware/notFound')
 const handleErrors = require('./middleware/handleErrors')
 
+const usersRouter = require('./controllers/users')
+
 // usamos el middleware de cors para que todoas las peticiones
 // permitan compartir recursos con diferentes origenes
 app.use(cors())
@@ -111,11 +113,13 @@ app.post('/api/notes/', async (request, response, next) => {
   }
 })
 
-app.use((request, response) => {
-  response.status(404).json({
-    error: 'Nor found'
-  })
-})
+// app.use((request, response) => {
+//   response.status(404).json({
+//     error: 'Not found'
+//   })
+// })
+
+app.use('/api/users', usersRouter)
 
 // el orden de los middlewares es importante
 // middleware no ha encontrado nada
