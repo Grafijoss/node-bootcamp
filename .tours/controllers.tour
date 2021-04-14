@@ -24,18 +24,38 @@
     },
     {
       "file": "controllers/users.js",
-      "description": "## Endpoint para crear usuario\r\n*users.js line: 4*\r\n\r\n- El path de usersRouter es relativo a la ruta `/api/users`",
-      "line": 4
+      "description": "## Endpoint para crear usuario\r\n*users.js line: 4*\r\n\r\n````javascript\r\nusersRouter.post('/', async (request, response)\r\n````\r\n\r\n- El path de usersRouter es relativo a la ruta `/api/users`",
+      "line": 5
     },
     {
       "file": "controllers/users.js",
-      "description": "## Instancia del modelo User\r\n*users.js line: 8*\r\n\r\n- **User** tiene el scheme, toJSON, y los metodos *save, find, delete, ...*",
-      "line": 8
+      "description": "## Instancia del modelo User\r\n*users.js line: 17*\r\n\r\n````javascript\r\nconst user = new User({\r\n````\r\n\r\n- **User** tiene el scheme, toJSON, y los metodos *save, find, delete, ...*",
+      "line": 13,
+      "selection": {
+        "start": {
+          "line": 17,
+          "character": 3
+        },
+        "end": {
+          "line": 17,
+          "character": 26
+        }
+      }
     },
     {
       "file": "controllers/users.js",
-      "description": "## Respuesta del endpoint\r\n*users.js line:16*\r\n\r\n- Creamos una constante con el user que s eguardo\r\n- Regresamos el usuario en la respuesta del endpoint",
-      "line": 16
+      "description": "## Respuesta del endpoint\r\n*users.js line: 25*\r\n\r\n````javascript\r\nresponse.json(saveUser)\r\n````\r\n\r\n- Creamos una constante con el user que se guardo\r\n- Regresamos el usuario en la respuesta del endpoint",
+      "line": 21,
+      "selection": {
+        "start": {
+          "line": 25,
+          "character": 3
+        },
+        "end": {
+          "line": 25,
+          "character": 26
+        }
+      }
     }
   ]
 }

@@ -4,7 +4,7 @@
   "steps": [
     {
       "file": "package.json",
-      "description": "# Dependencia mongoose\r\n*package.json line: 29*\r\n\r\n- Es un object modeling\r\n- Conecta a la base de datos de mongo\r\n- Crea un sistema de validación\r\n- Lógica para evitar problemas\r\n\r\n\r\n`npm install mongoose`",
+      "description": "# Dependencia mongoose\r\n*package.json line: 29*\r\n\r\n- Es un object modeling\r\n- Conecta a la base de datos de mongo\r\n- Crea un sistema de validación\r\n- Lógica para evitar problemas\r\n\r\n\r\n`npm install mongoose`\r\n`npm install --save mongoose-unique-validator`\r\n\r\n## mongoose-unique-validator\r\n\r\nEsta libreria nos permite valddar que los campos no se repitan en las entidades de la base de datos",
       "line": 29
     },
     {
