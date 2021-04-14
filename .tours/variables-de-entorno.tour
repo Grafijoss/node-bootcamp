@@ -4,13 +4,22 @@
   "steps": [
     {
       "file": ".env",
-      "description": "# Variables de entorno\r\n\r\n- Para trabajar con variables de entorno necesitamos un archivo .env por cada entorno\r\n- Las variables deben estar en mayusculas y no usamos comillas para los strings",
-      "line": 1
+      "description": "# Variables de entorno\r\n*.env*\r\n\r\n- Para trabajar con variables de entorno necesitamos un archivo .env por cada entorno\r\n- Las variables deben estar en mayusculas y no usamos comillas para los strings"
     },
     {
       "file": "index.js",
-      "description": "## Variable de entorno\r\n\r\n- Las variables las traemos desde el archivo .env",
-      "line": 129
+      "description": "## Variable de entorno\r\n*index.js line: 134*\r\n\r\n````javascript\r\nconst PORT = process.env.PORT\r\n````\r\n\r\n- Las variables las traemos desde el archivo .env",
+      "line": 134,
+      "selection": {
+        "start": {
+          "line": 134,
+          "character": 1
+        },
+        "end": {
+          "line": 134,
+          "character": 30
+        }
+      }
     }
   ]
 }

@@ -4,17 +4,12 @@
   "steps": [
     {
       "file": "models/User.js",
-      "description": "## Importamos Schema y model desde mongoose\r\n\r\n- El schema es el contrato que va a tener la entidad en la base de datos\r\n\r\n",
+      "description": "## Importamos Schema y model desde mongoose\r\n`User.js line: 1`\r\n\r\n- El schema es el contrato que va a tener la entidad en la base de datos\r\n\r\n",
       "line": 1
     },
     {
       "file": "models/User.js",
-      "description": "## toJSON\r\n\r\n- Con el toJSON podemos transformar los datos de entrada antes de recibirlos en el endpoint\r\n- Para el caso de User vamos a borrar el passwordHash por que es información sensible que no debe ser revelada\r\n",
-      "line": 13
-    },
-    {
-      "file": "models/User.js",
-      "description": "## Schema\r\n\r\n- Creamos uns schema con las propiedades que va a tener el contrato de **User**\r\n- Identificamos de que tipo va a ser cada propiedad\r\n-- Notes: va a ser un Array con todos los id de las notas que va aser de tipo **objectId**\r\n-- type: *Schema.Types.ObjectId*\r\n-- ref: La referencia es al modelo *Note* la relación la vamos a tener en los dos modelos\r\n",
+      "description": "## Schema\r\n*User.js line: 3*\r\n\r\n- Creamos uns schema con las propiedades que va a tener el contrato de **User**\r\n- Identificamos de que tipo va a ser cada propiedad\r\n-- Notes: va a ser un Array con todos los id de las notas que va aser de tipo **objectId**\r\n-- type: *Schema.Types.ObjectId*\r\n-- ref: La referencia es al modelo *Note* la relación la vamos a tener en los dos modelos\r\n",
       "line": 3,
       "selection": {
         "start": {
@@ -28,13 +23,18 @@
       }
     },
     {
+      "file": "models/User.js",
+      "description": "## toJSON\r\n*User.js line: 13*\r\n\r\n- Con el toJSON podemos transformar los datos de entrada antes de recibirlos en el endpoint\r\n- Para el caso de User vamos a borrar el passwordHash por que es información sensible que no debe ser revelada\r\n",
+      "line": 13
+    },
+    {
       "file": "models/Note.js",
-      "description": "## Relación con el modelo User\r\n\r\n-- user: va a ser un Object de tipo **objectId**\r\n-- type: *Schema.Types.ObjectId*\r\n-- ref: La referencia es al modelo *User* la relación la vamos a tener en los dos modelos",
+      "description": "## Relación con el modelo User\r\n*User.js line: 7*\r\n\r\n-- user: va a ser un Object de tipo **objectId**\r\n-- type: *Schema.Types.ObjectId*\r\n-- ref: La referencia es al modelo *User* la relación la vamos a tener en los dos modelos",
       "line": 7
     },
     {
       "file": "models/User.js",
-      "description": "## model\r\n\r\n- Creamos una instancia de model\r\n- Recibe como primer parametro el nombre del moelo\r\n- Como segundo parametro el schema que va usar el modelo\r\n- De esta forma ya podemos usar el modelo para crear usuarios",
+      "description": "## Instancia User de model\r\n*User.js line: 23*\r\n\r\n- Creamos una instancia de model\r\n- Recibe como primer parametro el nombre del moelo\r\n- Como segundo parametro el schema que va usar el modelo\r\n- De esta forma ya podemos usar el modelo para crear usuarios",
       "line": 23
     }
   ]

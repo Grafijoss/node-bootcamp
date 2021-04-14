@@ -4,8 +4,17 @@
   "steps": [
     {
       "file": "package.json",
-      "description": "Extendemos la configuración desde standard ./node_modules/standard/eslintrc.json\r\nya no necesitamos el .eslintrc.js que es una configuración manual para el proyecto\r\n\r\nEn el settings pincipal de VC podemos añadir el la siguiente propiedad para formatear los ficheros cuando se guarda \r\n\r\n```javascript \r\n\"editor.formatOnSave\": false, \r\n\"editor.codeActionsOnSave\": { \r\n  \"source.fixAll.eslint\": true \r\n}, \r\n``` ",
-      "line": 25,
+      "description": "## Dependencia slint\r\n*package.json line: 17*\r\n\r\nPara que funciona la configuración de slint tanto para identificar los errores como el auto formateado slint debe estar instalado como dependencia de desarrollo\r\n\r\nnpm install eslint -D",
+      "line": 17
+    },
+    {
+      "file": "package.json",
+      "description": "## Dependencia standard\r\n*package.json line: 20*\r\n\r\nPara poder extender la configuracion primero tenemos que instalar la dependencia de desarrollo\r\n\r\nnpm install standard -D",
+      "line": 20
+    },
+    {
+      "file": "package.json",
+      "description": "## Configuración eslint extends de standard\r\n*package.json line: 31*\r\n\r\nExtendemos la configuración desde standard ./node_modules/standard/eslintrc.json\r\nya no necesitamos el .eslintrc.js que es una configuración manual para el proyecto\r\n\r\nEn el settings pincipal de VC podemos añadir el la siguiente propiedad para formatear los ficheros cuando se guarda \r\n\r\n```javascript \r\n\"editor.formatOnSave\": false, \r\n\"editor.codeActionsOnSave\": { \r\n  \"source.fixAll.eslint\": true \r\n}, \r\n``` ",
       "selection": {
         "start": {
           "line": 23,
@@ -15,17 +24,8 @@
           "line": 23,
           "character": 54
         }
-      }
-    },
-    {
-      "file": "package.json",
-      "description": "Para que funciona la configuración de slint tanto para identificar los errores como el auto formateado slint debe estar instalado como dependencia de desarrollo\r\n\r\nnpm install eslind -D",
-      "line": 16
-    },
-    {
-      "file": "package.json",
-      "description": "Para poder extender la configuracion primero tenemos que instalar la dependencia de desarrollo\r\n\r\nnpm install standard -D",
-      "line": 18
+      },
+      "line": 31
     }
   ]
 }
