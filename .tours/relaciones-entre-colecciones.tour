@@ -1,0 +1,96 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Relaciones entre colecciones",
+  "steps": [
+    {
+      "file": "controllers/notes.js",
+      "description": "## Añadimos la nueva nota al propietario\r\n\r\n````javascript\r\nuser.notes = user.notes.concat(saveNote._id)\r\n````\r\n\r\n- Despues de guardar la nota la agregamos a las notas del propietario\r\n- Recuperamos las notas del usuario con el id y le concatenamos la nueva nota\r\n- Guardamos al usuario\r\n- Esta forma de asignar el valor de notas solo funciona con mongoose no funciona nativamente con mongo (es mas complejo)",
+      "line": 86,
+      "selection": {
+        "start": {
+          "line": 86,
+          "character": 5
+        },
+        "end": {
+          "line": 86,
+          "character": 49
+        }
+      }
+    },
+    {
+      "file": "controllers/notes.js",
+      "description": "## Recuperamos el usuario por ID\r\n\r\n````javascript\r\nconst user = await User.findById(userId)\r\n````\r\n\r\n- Recuperamos el usuario por ID usando el metodo del modelo\r\n- Con el usuario recuperado le podemos pasar el usuario cuando creamos la nota\r\n",
+      "line": 68,
+      "selection": {
+        "start": {
+          "line": 68,
+          "character": 3
+        },
+        "end": {
+          "line": 68,
+          "character": 43
+        }
+      }
+    },
+    {
+      "file": "controllers/notes.js",
+      "description": "## Enviamos el ID del usuario al que pertenece la nota\r\n\r\n````javascript\r\nuser: user._id\r\n````\r\n\r\n- El user no esta parseado a JSON\r\n- Podemos usar el user.toJSON().id\r\n- Tambien podemos enviar el id derectamente con .id o ._id\r\n",
+      "line": 80,
+      "selection": {
+        "start": {
+          "line": 80,
+          "character": 5
+        },
+        "end": {
+          "line": 80,
+          "character": 19
+        }
+      }
+    },
+    {
+      "file": "controllers/users.js",
+      "description": "## Relacionar una coleccion con otra users\r\n\r\n````javascript\r\nconst users = await User.find({}).populate('notes', {\r\n    content: 1,\r\n    date: 1,\r\n    important: 1\r\n  })\r\n````\r\n\r\n- En mongo existe agregaciones\r\n- En mongoose existe populate que e sun metodo que usa las referencias que estan creadas en los modelos\r\n- populate lo que hace es recuperar la información para rellenar la información y no hacerlo manualmente\r\n- como primer parametro le pasamos un string en plural que hace referencia al campo *notes* dentro del modelo *User*\r\n- como segundo parametro le podemos pasar objeto indicando cuales son los parametros que queremos que regrese y cuales no\r\n- si queremos que regrese el campo usamos *1* de otra forma *0*\r\n- el _id regresa por defecto a menos que le digamos que no\r\n\r\n",
+      "line": 6,
+      "selection": {
+        "start": {
+          "line": 6,
+          "character": 3
+        },
+        "end": {
+          "line": 10,
+          "character": 5
+        }
+      }
+    },
+    {
+      "file": "controllers/notes.js",
+      "description": "## Relacionar una coleccion con otra notes\r\n\r\n````javascript\r\nconst notes = await Note.find({}).populate('user', {\r\n    username: 1,\r\n    name: 1\r\n  })\r\n````\r\n\r\n- En mongo existe agregaciones\r\n- En mongoose existe populate que e sun metodo que usa las referencias que estan creadas en los modelos\r\n- populate lo que hace es recuperar la información para rellenar la información y no hacerlo manualmente\r\n- como primer parametro le pasamos un string en plural que hace referencia al campo *notes* dentro del modelo *User*\r\n- como segundo parametro le podemos pasar objeto indicando cuales son los parametros que queremos que regrese y cuales no\r\n- si queremos que regrese el campo usamos *1* de otra forma *0*\r\n- el _id regresa por defecto a menos que le digamos que no",
+      "line": 6,
+      "selection": {
+        "start": {
+          "line": 6,
+          "character": 3
+        },
+        "end": {
+          "line": 9,
+          "character": 5
+        }
+      }
+    },
+    {
+      "file": "models/User.js",
+      "description": "## Poblar la información\r\n\r\n````javascript\r\nnotes: [{\r\n    type: Schema.Types.ObjectId,\r\n    ref: 'Note'\r\n  }\r\n````\r\n\r\n- Lo que va a hacer es poblar notes con la información del *ObjectId* del modelo *Note* que tiene como referencia\r\n- En las bases de datos relacionales con *join* podemos relacionar dos colecciones o tablas por medio de un parametro\r\n- Los *join* son transaccionales lo que quiere decir que las tablas quedan bloqeuadas\r\n- Lo relacion que estamos haciendo no es transaccional\r\n",
+      "line": 12,
+      "selection": {
+        "start": {
+          "line": 11,
+          "character": 3
+        },
+        "end": {
+          "line": 14,
+          "character": 4
+        }
+      }
+    }
+  ]
+}

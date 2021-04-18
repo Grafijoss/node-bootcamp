@@ -8,11 +8,11 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 
-const Note = require('./models/Note')
 const notFound = require('./middleware/notFound')
 const handleErrors = require('./middleware/handleErrors')
 
 const usersRouter = require('./controllers/users')
+const notesRouter = require('./controllers/notes')
 
 // usamos el middleware de cors para que todoas las peticiones
 // permitan compartir recursos con diferentes origenes
@@ -38,81 +38,6 @@ app.get('/', (request, response) => {
   response.send('<h1>Hello World</h1>')
 })
 
-app.get('/api/notes', async (request, response) => {
-  const notes = await Note.find({})
-  response.json(notes)
-})
-
-// es la forma dicamica de recuperar un segmento del PATH
-app.get('/api/notes/:id', (request, response, next) => {
-  // params es parte del objeto request
-  // los segmentos del PATH siempre van a ser un string-
-  const { id } = request.params
-
-  Note.findById(id)
-    .then(note => {
-      if (note) {
-        response.send(note)
-      } else {
-        response.send(404).end()
-      }
-    })
-    .catch(err => {
-      // saltamos al middleware de error
-      next(err)
-    })
-})
-
-app.put('/api/notes/:id', (request, response, next) => {
-  const { id } = request.params
-  const note = request.body
-
-  const newNoteinfo = {
-    content: note.content,
-    important: note.important
-  }
-
-  Note.findByIdAndUpdate(id, newNoteinfo, { new: true })
-  // lo que va a retornar la promesa es el documento sin editar
-  // ara retornar el dcomento editado hay que pasar un tercer parametro
-    .then(result => response.json(result))
-})
-
-app.delete('/api/notes/:id', async (request, response, next) => {
-  const { id } = request.params
-
-  try {
-    await Note.findByIdAndDelete(id)
-    response.status(204).end()
-  } catch (err) {
-    next(err)
-  }
-  // busca el middleware con el error como primer parametro
-})
-
-app.post('/api/notes/', async (request, response, next) => {
-  const noteBody = request.body
-
-  if (!noteBody.content) {
-    return response.status(400).json({
-      error: 'note content is missing'
-    })
-  }
-
-  const note = new Note({
-    content: noteBody.content,
-    date: new Date(),
-    important: noteBody.important || false
-  })
-
-  try {
-    const saveNote = await note.save()
-    response.json(saveNote)
-  } catch (error) {
-    next(error)
-  }
-})
-
 // app.use((request, response) => {
 //   response.status(404).json({
 //     error: 'Not found'
@@ -120,6 +45,7 @@ app.post('/api/notes/', async (request, response, next) => {
 // })
 
 app.use('/api/users', usersRouter)
+app.use('/api/notes', notesRouter)
 
 // el orden de los middlewares es importante
 // middleware no ha encontrado nada

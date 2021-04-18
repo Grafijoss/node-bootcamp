@@ -44,8 +44,8 @@
     },
     {
       "file": "controllers/users.js",
-      "description": "## bcrypt hash\r\n*users.js line 10*\r\n\r\n````javascript\r\nconst passwordHash = bcrypt.ha(password, saltRounds)\r\n````\r\n- primer parametro recibe el password que se va a hashear\r\n- segundo parametro saltRounds\r\n- hash: es el metodo asincrono\r\n- hashSync: es el metodo sincrono\r\n- Es recomendable usar hash porque el coste de computación que pueda tomar es grande entre mas complejo toma mas tiempo  ",
-      "line": 10,
+      "description": "## bcrypt hash\r\n*users.js*\r\n\r\n````javascript\r\nconst passwordHash = bcrypt.ha(password, saltRounds)\r\n````\r\n- primer parametro recibe el password que se va a hashear\r\n- segundo parametro saltRounds\r\n- hash: es el metodo asincrono\r\n- hashSync: es el metodo sincrono\r\n- Es recomendable usar hash porque el coste de computación que pueda tomar es grande entre mas complejo toma mas tiempo  ",
+      "line": 20,
       "selection": {
         "start": {
           "line": 10,
@@ -60,7 +60,7 @@
     {
       "file": "controllers/users.js",
       "description": "## saltRounds\r\n\r\n*users.js*\r\n````javascript\r\nconst saltRounds = 10\r\n````\r\n\r\n- Es la complejidad algoritmica\r\n- Entre mas complejo mas tarda pero es mas seguro\r\n- Es el coste de computación que va tomar hashear el password",
-      "line": 9,
+      "line": 19,
       "selection": {
         "start": {
           "line": 15,
@@ -68,7 +68,7 @@
         },
         "end": {
           "line": 15,
-          "character": 65
+          "character": 27
         }
       }
     },
