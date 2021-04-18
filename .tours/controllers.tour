@@ -5,7 +5,7 @@
     {
       "file": "index.js",
       "description": "## Middleware de users controllers index\r\n*index.js*\r\n\r\n````javascript\r\napp.use('/api/users', usersRouter)\r\napp.use('/api/notes', notesRouter)\r\n````\r\n\r\n- de esta forma somos capaces de crear enpoints que van a estar disponibles en nuestra app hecha con express fuera del index\r\n- añadimos un middleware cuando hace match a */api/users* tiene que utilizar el *usersRouter*",
-      "line": 47,
+      "line": 48,
       "selection": {
         "start": {
           "line": 123,
@@ -14,6 +14,36 @@
         "end": {
           "line": 123,
           "character": 34
+        }
+      }
+    },
+    {
+      "file": "controllers/notes.js",
+      "description": "## Inyectar un middleware en una ruta\r\n\r\n````javascript\r\nnotesRouter.post('/', userStractor, async (request, response, next)\r\n\r\n````\r\n\r\n- Un middleware se puede inyectar como parametro en la ruta\r\n- Se puede inyectar tantos middlewares como se quiera",
+      "line": 63,
+      "selection": {
+        "start": {
+          "line": 63,
+          "character": 1
+        },
+        "end": {
+          "line": 63,
+          "character": 68
+        }
+      }
+    },
+    {
+      "file": "middleware/userStractor.js",
+      "description": "## Guardar información en el request desde un middleware\r\n\r\n````javascript\r\nconst { id: userId } = decodedToken\r\n  request.userId = userId\r\n  next()\r\n````\r\n\r\n- Los middlewares pueden guardar información en el request antes de pasar a la siguiente ruta\r\n- Tambien se puede mutar la información antes de pasar a la siguiente ruta\r\n- next() continuamos a la siguiente ruta con la información que se agrego o se muto\r\n- Si se genera un error para la ejecución y podemos regresar el error o pasar a la siguiente ruta o middleware que haga match con el error\r\n",
+      "line": 5,
+      "selection": {
+        "start": {
+          "line": 27,
+          "character": 3
+        },
+        "end": {
+          "line": 32,
+          "character": 9
         }
       }
     },

@@ -1,8 +1,8 @@
-POST http://localhost:3001/api/notes/ 
+POST http://localhost:3001/api/notes
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNzc3MjJkNjZhOTA4NThlMGZkZDdhYyIsInVzZXJuYW1lIjoiVXNlcjEiLCJpYXQiOjE2MTg3Nzg3OTF9.KtF7EZsAEG97H82KNSEmwnDxWE-HBFX6QWvI83dZvRw
 
 {
-    "content": "Post with User",
-    "important": true,
-    "userId": "6077722d66a90858e0fdd7ac"
+    "content": "Post with middleware and token",
+    "important": true
 }

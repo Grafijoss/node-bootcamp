@@ -29,7 +29,9 @@ usersRouter.post('/', async (request, response) => {
 
     response.status(201).json(saveUser)
   } catch (error) {
-    response.status(400).json(error)
+    response.status(401).json({
+      error: 'invalid user or password'
+    })
   }
 })
 

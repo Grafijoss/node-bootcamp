@@ -15,6 +15,21 @@
       "file": "requests/create_note.rest",
       "description": "## Payload\r\n*create_note.js line: 4*\r\n\r\n- En el caso que la acción requiera de un payload o un body para el request",
       "line": 4
+    },
+    {
+      "file": "requests/create_note.rest",
+      "description": "## Cabezeras\r\n\r\n````javascript\r\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNzc3MjJkNjZhOTA4NThlMGZkZDdhYyIsInVzZXJuYW1lIjoiVXNlcjEiLCJpYXQiOjE2MTg3Nzg3OTF9.KtF7EZsAEG97H82KNSEmwnDxWE-HBFX6QWvI83dZvRw-xx\r\n````\r\n\r\n- En el caso que la acción requiera de una o un cabezera para el request",
+      "line": 3,
+      "selection": {
+        "start": {
+          "line": 3,
+          "character": 1
+        },
+        "end": {
+          "line": 3,
+          "character": 199
+        }
+      }
     }
   ]
 }

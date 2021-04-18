@@ -13,6 +13,7 @@ const handleErrors = require('./middleware/handleErrors')
 
 const usersRouter = require('./controllers/users')
 const notesRouter = require('./controllers/notes')
+const loginRouter = require('./controllers/login')
 
 // usamos el middleware de cors para que todoas las peticiones
 // permitan compartir recursos con diferentes origenes
@@ -46,6 +47,7 @@ app.get('/', (request, response) => {
 
 app.use('/api/users', usersRouter)
 app.use('/api/notes', notesRouter)
+app.use('/api/login', loginRouter)
 
 // el orden de los middlewares es importante
 // middleware no ha encontrado nada

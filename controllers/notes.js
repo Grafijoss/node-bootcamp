@@ -1,6 +1,7 @@
 const notesRouter = require('express').Router() // creamos una constante con el Router de express
 const Note = require('../models/Note')
 const User = require('../models/User') // requierimos el modelo Note
+const userStractor = require('../middleware/userStractor')
 
 notesRouter.get('/', async (request, response) => {
   const notes = await Note.find({}).populate('user', {
@@ -30,7 +31,7 @@ notesRouter.get('/:id', (request, response, next) => {
     })
 })
 
-notesRouter.put('/:id', (request, response, next) => {
+notesRouter.put('/:id', userStractor, (request, response, next) => {
   const { id } = request.params
   const note = request.body
 
@@ -45,7 +46,7 @@ notesRouter.put('/:id', (request, response, next) => {
     .then(result => response.json(result))
 })
 
-notesRouter.delete('/:id', async (request, response, next) => {
+notesRouter.delete('/:id', userStractor, async (request, response, next) => {
   const { id } = request.params
 
   try {
@@ -57,14 +58,17 @@ notesRouter.delete('/:id', async (request, response, next) => {
   // busca el middleware con el error como primer parametro
 })
 
-notesRouter.post('/', async (request, response, next) => {
+// podemos enviar tantos middlewares como queramos
+// antes del callback pasamos el middlware
+notesRouter.post('/', userStractor, async (request, response, next) => {
   const {
     content,
-    important = false,
-    userId
+    important = false
   } = request.body
 
-  // findById es un metodo del modelo user que nos sirve para resuperar una sola nota por el id
+  // resuperamos el userId desde el request que lo agrego el middleware userStractor
+  const { userId } = request
+
   const user = await User.findById(userId)
 
   if (!content) {

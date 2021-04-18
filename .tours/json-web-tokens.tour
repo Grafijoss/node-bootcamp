@@ -1,0 +1,36 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "JSON Web Tokens",
+  "steps": [
+    {
+      "file": "package.json",
+      "description": "## jsonwebtoken\r\n\r\n- Es uno de los paquetes mas utilizados para crear JSON WEB Tokens\r\n",
+      "line": 29
+    },
+    {
+      "file": "controllers/login.js",
+      "description": "## Firma del token\r\n\r\n````javascript\r\nconst token = jwt.sign(\r\n    userForToken,\r\n    process.env.SECRET_WORD,\r\n    {\r\n      expiresIn: 60 * 60 * 24 * 7\r\n    })\r\n````\r\n\r\n- Para firmar el token usamos el metodo *sign* de *jsonwebtoken*\r\n-  Como primer parametro le enviamos el usuario que queremos firmar\r\n- Como segundo argumento un string con la palabra secreta que vamos a usar para codificar y decodificar es la misma\r\n-- Es buena poractica que la palabra secreta se encuentre como una variable de entorno asi se puede tener mas de una por ambiente y tanpoco se versiona con el código\r\n- El tercer parametro es un objeto donde en el campo *expiresIn* le podemos especificar el tiempo de expiración del token en segundos ",
+      "line": 27,
+      "selection": {
+        "start": {
+          "line": 27,
+          "character": 3
+        },
+        "end": {
+          "line": 32,
+          "character": 7
+        }
+      }
+    },
+    {
+      "file": "middleware/userStractor.js",
+      "description": "## Enviar el token\r\n\r\n- La forma mas correcta o mas usada es enviar el token por medio de una cabecera HTTP *Authorization*\r\n- Hay diferentes esquemas de autenticación\r\n-- Basic: esta deprecated envia el usuairo y la contraseña y lo pasa a b64\r\n-- Bearer: tokens de acceso en resursos protegidos mediante OAuth(2.0) es un conjunto de reglas para hacer autenticaci{on de forma segura\r\n- Los webtokens no deben enviarse con protocolo HTTP solo HTTPS\r\n\r\n## Recuperar la cabezera de una petición con express\r\n\r\n````javascript\r\nconst authorization = request.get('authorization')\r\n````",
+      "line": 6
+    },
+    {
+      "file": "middleware/userStractor.js",
+      "description": "## Verificamos que el token sea valido\r\n\r\n````javascript\r\ndecodedToken = jwt.verify(token, process.env.SECRET_WORD)\r\n````\r\n\r\n- Si *authorization* existe y comienza con *bearer* eliminamos el *bearer* y el espacio y lo asignamos a *token*\r\n- Dentro del *try catch* verificamos el token con el meotdo *verify* de *jsonwebtoken* \r\n-- Como primer parametro le enviamos el token\r\n-- El segundo parametro es la palabra secreta para decodificarlo\r\n- Si el *token* o el  *decodedToken.id* no existan regresamos un error *401*\r\n- Si existen obtenemos el *userId* haciendo un destructuring del *decodedToken*\r\n- Con el metodo *findById* del modelo buscamos el usuario\r\n- del usuario podemos obtener el id",
+      "line": 15
+    }
+  ]
+}
